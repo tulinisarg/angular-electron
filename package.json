@@ -28,7 +28,7 @@
     "electron:test": "electron ./dist",
     "electron:dev": "npm run build && electron ./dist",
     "electron:prod": "npm run build:prod && electron ./dist",
-    "electron:linux": "npm run build:prod && node package.js --asar --platform=linux --arch=x64",
+    "electron:linux": "npm run build:prod && node package.js --asar-unpack --platform=linux --arch=x64",
     "electron:windows": "npm run build:prod && node package.js --asar --platform=win32 --arch=ia32",
     "electron:mac": "npm run build:prod && node package.js --asar --platform=darwin --arch=x64",
     "test": "karma start ./karma.conf.js",
