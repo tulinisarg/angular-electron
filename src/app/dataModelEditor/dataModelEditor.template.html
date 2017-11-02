@@ -1,0 +1,58 @@
+<div fxLayout="column" fxFlex fxFill fxLayoutAlign=" center">
+  <div class="input-card" [ngStyle.md]="{'width':'90vw'}" [ngStyle.lg]="{'width': '80vw'}" [ngStyle.xl]="{'width': '70vw'}">
+     <md-card fxLayout="row" fxLayoutAlign="space-between">
+      <md-input-container fxFlex="33%" >
+        <input mdInput placeholder="Data Model Name" [(ngModel)]="model.name" name="dataModelName" #dataModelName="ngModel" required disabled>
+        <md-hint *ngIf="dataModelName?.invalid" [ngStyle]="{'color': 'red'}" align="start">Data Model name is required</md-hint>
+      </md-input-container>
+      <md-input-container fxFlex="33%" >
+        <input mdInput placeholder="Data Model Description" [(ngModel)]="model.description" name="dataModelDescription" #dataModelDesc="ngModel" required>
+        <md-hint *ngIf="dataModelDesc?.invalid" [ngStyle]="{'color': 'red'}" align="start">Data model description is required</md-hint>
+      </md-input-container>
+      <md-input-container fxFlex="33%" >
+        <input mdInput placeholder="Data Model Source" [(ngModel)]="model.dataSource" name="dataModelSource" #dataModelSource="ngModel" required>
+        <md-hint *ngIf="dataModelSource?.invalid" [ngStyle]="{'color': 'red'}" align="start">Data model source is required</md-hint>
+      </md-input-container>
+    </md-card>
+    <md-divider></md-divider>
+    <md-card fxLayout="row" fxLayoutAlign="space-between center">
+      <md-input-container fxFlex="20">
+        <input mdInput placeholder="Name" [(ngModel)]="tempField.name" name="modelName" pattern="^[a-zA-Z0-9_]*$" #fieldName="ngModel">
+      </md-input-container>
+      <md-select fxFlex="20" placeholder="Model Type" [(ngModel)]="tempField.fieldType" name="fieldType" (change)="checkValue(tempField.fieldType)">
+        <md-option *ngFor="let type of fieldTypes" [value]="type">
+          {{type.key}}
+        </md-option>
+      </md-select>
+      <md-select fxFlex="20" placeholder="Complex Type" [(ngModel)]="tempField.complexType" name="fieldType" [disabled]="tempField?.fieldType?.key !== 'MODEL'">
+        <md-option *ngFor="let model of modelList" [value]="model">
+          {{model?.val?.name}}
+        </md-option>
+      </md-select>
+      <md-checkbox placeholder="isArray" [(ngModel)]="tempField.isArray" name="setArray">isArray</md-checkbox>
+      <button md-button (click)="addField(tempField);" [disabled]="fieldName.invalid"><md-icon md-list-icon >add</md-icon></button>
+      <button md-button (click)="clearInputField();"><md-icon md-list-icon >clear</md-icon></button>
+    </md-card>
+  </div>
+  <div [ngStyle]="{'width':'100vw'}" [ngStyle.lg]="{'width': '80vw'}" [ngStyle.md]="{'width':'90vw'}" [ngStyle.xl]="{'width': '70vw'}">
+    <md-card fxLayout="row" class="card-color" fxLayoutAlign="space-between">
+      <div fxFlex="33%">Name</div>
+      <div fxFlex="33%">Type</div>
+      <div fxFlex="33%">isArray</div>
+    </md-card>
+    <md-divider></md-divider>
+    <div *ngFor="let field of model.fields; let i = index;" fxLayout="row" (mouseover)="mouseOver(i)" (mouseout)="mouseOut()"
+    class="list-card" [ngStyle]="{'width':'100vw'}" [ngStyle.lg]="{'width': '80vw'}" [ngStyle.md]="{'width':'90vw'}"
+    [ngStyle.xl]="{'width': '70vw'}">
+    <md-card fxLayout="row" fxFlex="100%" fxLayoutAlign="space-between" [ngClass]="{'selected' : i == selected }" (click)="assignToInputField(field, i)">
+      <div fxFlex="33%">{{field.name}}</div>
+      <div *ngIf="!field.complexTypeName" fxFlex="33%">{{getKeyOfFeildTypeByValue(field.fieldType)}}</div>
+      <div *ngIf="field.complexTypeName" fxFlex="33%">{{field.complexTypeName}}<font size="2">({{getKeyOfFeildTypeByValue(field.fieldType)}})</font></div>
+      <div fxFlex="33%">{{field.isArray}}</div>
+    </md-card>
+    <div class="delete">
+      <md-icon md-list-icon (click)="deleteField(i);" [fxShow]="mouseOverIndex === i">delete</md-icon>
+    </div>
+  </div>
+</div>
+</div>

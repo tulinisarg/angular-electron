@@ -1,0 +1,14 @@
+.show {
+  visibility: visible;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.overme {
+  width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

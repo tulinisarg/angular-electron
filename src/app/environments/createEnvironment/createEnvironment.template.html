@@ -1,0 +1,7 @@
+  <form #environmentPage="ngForm" class="create-environment-container" fxLayout="column" fxLayoutAlign="center">
+    <h2 md-dialog-title	>Enter New Environment</h2>
+      <md-input-container  fxLayout="column" fxLayoutAlign="center">
+        <input type="text" mdInput  [(ngModel)]="environment.name" name="environment"  placeholder="Environment Name" required>
+      </md-input-container>
+    <button md-raised-button (click)="dialogRef.close(environment)" [disabled]="!environmentPage.valid">Create Environment</button>
+  </form>

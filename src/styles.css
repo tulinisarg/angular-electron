@@ -1,0 +1,401 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~https://fonts.googleapis.com/icon?family=Material+Icons';
+@import '~codemirror/lib/codemirror.css';
+@import '~codemirror/theme/mdn-like.css';
+@import '~codemirror/addon/hint/show-hint.css';
+
+/* bKeeper start*/
+
+.drop{
+  padding: 1.5em;
+  border: 1px solid #ccc !important;
+  border-radius: 5px;
+  background:#E9E9E9 !important;
+  }
+  
+.drop-container{
+  padding: 1.5em;
+  border: 1px solid #ccc !important;
+  border-radius: 5px;
+  background:white !important;
+  }
+
+.routerborder {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 1.5em;
+}
+
+.ui-hover-panel {
+  border: 1px dashed blue !important;
+}
+
+.ui-select-panel {
+  border: 1px solid blue !important;
+  z-index: 100;
+  position: relative;
+}
+
+.ui-sortable-placeholder {
+  padding: 2em;
+  border: 1px dotted #ccc;
+  background: #666666;
+  opacity:0.8;
+}
+
+.column {
+  position: relative;
+  flex: 1 1 auto;
+  margin: 10px;
+}
+
+.column:after {
+  content: "Column";
+}
+
+.row {
+  position: relative;
+  display: flex;
+}
+.row:after {
+  content: "Row";
+}
+
+.router {
+  position: relative;
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.router:after {
+  background-color: #F5F5F5;
+  border: 1px solid #DDDDDD;
+  border-radius: 4px 0 4px 0;
+  color: #9DA0A4;
+  content: "Router Outlet";
+  font-size: 8px;
+  font-weight: bold;
+  left: 0px;
+  padding: 3px 7px;
+  position: absolute;
+  top: 0px;
+}
+
+.delete {
+  position: absolute !important;
+  top: -9px;
+  right: 0px;
+  bottom: 0px;
+  color: #FF0000;
+  width: 15px;
+  height: 15px;
+}
+
+.ui-hover-delete {
+  border: 1px solid red !important;
+  z-index: 100;
+}
+
+
+/* bKeeper end */
+
+
+/**
+bhive AD Styles
+*/
+
+
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+
+
+/*md-card {
+  max-width: 80%;
+  margin: 2em auto;
+  text-align: center;
+}
+
+md-toolbar-row {
+  justify-content: space-between;
+}
+
+.done {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: white;
+}*/
+
+.fab-button-bottom-right {
+  position: fixed !important;
+  right: 10px;
+  bottom: 10px;
+  z-index: 2;
+}
+
+.iframe-design {
+  height: 100vh !important;
+  width: 100vw !important;
+  border: none !important;
+}
+
+.ad-margin-top-btm-15 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.ad-margin-right-15 {
+  margin-right: 15px;
+}
+
+.ad-margin-top-5 {
+  margin-top: 5px;
+}
+
+.ad-margin-top-12 {
+  margin-top: 12px;
+}
+
+.ad-font-size-18 {
+  font-size: 18px;
+}
+
+.ad-font-size-20 {
+  font-size: 23px;
+}
+
+.ad-font-size-15 {
+  font-size: 15px;
+}
+
+.ad-font-weight-bold {
+  font-weight: bold;
+}
+
+.ad-opacity-07 {
+  opacity: 0.7;
+}
+
+.ad-height-150 {
+  height: 150px;
+}
+
+.ad-height-60 {
+  height: 60px;
+}
+
+.ad-height-120 {
+  height: 120px;
+}
+
+.dialog_container {
+  height: 230px;
+}
+
+.ad-width-300 {
+  width: 300px;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.text-padding {
+  padding: 1em;
+}
+
+.ad-margin-bottom-20 {
+  margin-bottom: 20px;
+}
+
+.ad-height-230 {
+  height: 230px;
+}
+
+.ad-padding-top-5 {
+  padding-top: 5px;
+}
+
+.ad-cursor-pointer {
+  cursor: pointer;
+}
+
+.ad-tab-style {
+  height: 100vh;
+  width: 100%;
+}
+
+.ad-top-toolbar {
+  position: fixed;
+}
+
+.ad-sidenav-content {
+  margin-top: 64px !important;
+}
+
+.ad-fullscreen {
+  width: 100vw;
+  height: 100vh;
+}
+
+.ad-icon {
+  padding: 0 14px;
+}
+
+.ad-spacer {
+  flex: 1 1 auto;
+}
+
+.ad-margin-lt-rt-5 {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.ad-margin-lt-rt-15 {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.ad-margin-top-btm-5 {
+  margin: 5px 0px;
+}
+
+.mat-tab-body-wrapper {
+  height: 100% !important;
+}
+
+.submenu {
+  margin-left: 55px !important;
+}
+
+.ad-sidenav-menu {
+  background-color: #f5f5f5;
+  /*width: 50px !important;*/
+  min-width: 2vw !important;
+  height: calc(100% - 30px) !important; /*Done for making sidemenu scrollable before the view console icon*/
+}
+
+.ad-routing-select {
+  margin-top: -5px;
+}
+
+.ad-cursor-pointer {
+  cursor: pointer;
+}
+
+.tabs .mat-tab-label {
+  height: 36px !important;
+  line-height: 36px !important;
+}
+
+.tabs-mat-icon {
+  font-size: 15px !important;
+  line-height: 15px !important;
+  width: 15px !important;
+  height: 15px !important;
+}
+
+.full-height {
+  height: 100% !important;
+}
+
+/********** CodeMirror css ***********/
+
+.CodeMirror {
+  height: 100% !important;
+  font-family: tahoma, arial, sans-serif;
+  font-size: 1em;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    opacity: 0.4;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.5);
+    max-height: 1px;
+    max-width: 1px;
+}
+
+.container-label::after {
+    background-color: #F5F5F5;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 4px 0;
+    color: #9DA0A4;
+    font-size: 12px;
+    font-weight: bold;
+    left: 5px;
+    padding: 3px 7px;
+    position: absolute;
+    top: 5px;
+}
+
+.bkeeper-general-css {
+  position: relative;
+}
+.drop-container{
+  background: white;
+}
+.console-title-container {
+  background-color: #f5f5f5;
+}
+
+/******************************************************
+************** OFFLINE MATERIAL ICONS ****************
+******************************************************/
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(assets/MaterialIcons/iconfont/MaterialIcons-Regular.eot);
+  /* For IE6-8 */
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url(assets/MaterialIcons/iconfont/MaterialIcons-Regular.woff2) format('woff2'), url(assets/MaterialIcons/iconfont/MaterialIcons-Regular.woff) format('woff'), url(assets/MaterialIcons/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+
+.overflow_wrap {
+  overflow-wrap: break-word;
+}
+ 

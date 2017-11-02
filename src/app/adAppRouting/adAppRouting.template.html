@@ -1,0 +1,70 @@
+<ul class="tree root" fxLayout="column">
+  <li class="" *ngFor="let route of appRoutes; let i= index;" class="route-fixed-width">
+
+    <div fxLayout="row" fxLayoutAlign=" center">
+
+      <!-- Path Input field disabled field if '' or ** route-->
+      <md-input-container *ngIf="((i == 0) || (i == 1)) && isCldrnArr != 'true'; else inputChange;" class="element-margin">
+        <input mdInput placeholder="Path" [(ngModel)]="appRoutes[i].path" name="path-{{i}}" required disabled>
+      </md-input-container>
+      <!-- Path Input field -->
+      <ng-template #inputChange>
+        <md-input-container [ngClass]="{'mat-input-invalid': ((i == 0) || (i == 1)) && isCldrnArr != 'true'}" class="element-margin">
+          <input mdInput placeholder="Path" [(ngModel)]="appRoutes[i].path" name="path-{{i}}" required #pathRef="ngModel" (blur)="appRoutes[i].path == '&quot;&quot;'? appRoutes[i].path = '\'\'': null;removeDuplicatePath(appRoutes[i].path, i);">
+        </md-input-container>
+      </ng-template>
+
+      <!-- Component/Page input disabled field if '' or ** -->
+      <md-input-container *ngIf="((i == 0) || (i == 1)) && isCldrnArr != 'true'; else selectComponent;" class="element-margin">
+        <input mdInput placeholder="Page" [(ngModel)]="appRoutes[i].component" name="appPageName-{{i}}" required disabled>
+      </md-input-container>
+      <!-- Component Input field -->
+      <ng-template #selectComponent>
+        <md-select placeholder="Page" [(ngModel)]="appRoutes[i].component" name="appPageName-{{i}}" (change)="assignComponentCheck(i)" class="ad-routing-select element-margin">
+          <md-option *ngFor="let page of appPages" [value]="page.componentName">
+            {{page.appPageName}}
+          </md-option>
+        </md-select>
+      </ng-template>
+
+      <!-- Data input field -->
+      <md-input-container *ngIf="!(appRoutes[i].path == '\'\'' || appRoutes[i].path == '**' || appRoutes[i].path == '&quot;&quot;')" class="element-margin">
+        <input mdInput placeholder="Data" [(ngModel)]="appRoutes[i].data" name="data-{{i}}">
+      </md-input-container>
+
+      <md-input-container class="element-margin">
+        <input mdInput placeholder="Path Match" [(ngModel)]="appRoutes[i].pathMatch" name="pathMatch-{{i}}">
+      </md-input-container>
+
+      <!-- RedirectTo input field -->
+      <md-input-container class="element-margin">
+        <input mdInput placeholder="RedirectTo" [(ngModel)]="appRoutes[i].redirectTo" name="redirectTo-{{i}}" (blur)="appRoutes[i].redirectTo != ''? assignRedirectToCheck(i): null">
+      </md-input-container>
+      
+      <!-- Resolve input field -->
+      <md-input-container *ngIf="!(appRoutes[i].path == '\'\'' || appRoutes[i].path == '**' || appRoutes[i].path == '&quot;&quot;')" class="element-margin">
+        <input mdInput placeholder="Resolve" [(ngModel)]="appRoutes[i].resolve" name="resolve-{{i}}">
+      </md-input-container>
+
+       <!-- canActivate input field -->
+      <md-input-container *ngIf="!(appRoutes[i].path == '\'\'' || appRoutes[i].path == '**' || appRoutes[i].path == '&quot;&quot;')" class="element-margin">
+        <input mdInput placeholder="canActivate" [(ngModel)]="appRoutes[i].canActivate" name="canActivate-{{i}}">
+      </md-input-container>
+
+      <!-- Buttons-->
+      <button md-button (click)="deleteRoute(i)" *ngIf="!(((i == 0) || (i == 1)) && isCldrnArr != 'true')"><md-icon>delete</md-icon></button>
+      <!-- (((i == 0) || (i == 1)) && isCldrnArr != 'true') || (appRoutes[i].path != '' && appRoutes[i].redirectTo != '') -->
+      <button md-button (click)="addChildRoute(i, route)" *ngIf="!(((i == 0) || (i == 1)) && isCldrnArr != 'true')" [disabled]="appRoutes[i].path == '' || appRoutes[i].path == '\'\'' || appRoutes[i].path == '&quot;&quot' || appRoutes[i].path == '**' || appRoutes[i].redirectTo?true:false || !(appRoutes[i].path && appRoutes[i].component) "><md-icon>subdirectory_arrow_right</md-icon></button>
+      <button md-button *ngIf="(appRoutes.length-1 == i && isCldrnArr != 'true')" (click)="addRoute(i)"><md-icon>add</md-icon></button>
+
+    </div>
+
+    <!-- If children is present in this route, create a config and send to ad-app-routing -->
+    <ul *ngIf="route.children && route.children.length > 0;" fxFlexAlign="center">
+      <div [@enterAnimation]="i === viewIndex">
+        <ad-app-routing [appRoutes]="route.children" [appPages]="appPages" class="selectTheChildInsideTheWorld" [isCldrnArr]="'true'"></ad-app-routing>
+      </div>
+    </ul>
+
+  </li>
+</ul>

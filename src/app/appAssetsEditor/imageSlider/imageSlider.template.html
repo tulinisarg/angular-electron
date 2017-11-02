@@ -1,0 +1,32 @@
+<div fxLayout="column" fxFill>
+    <!-- Image Thumbnail slider container -->
+    <div fxLayout="row" class="ad-thumbnail-slider-container">
+        <div *ngFor="let imageObj of imageObjArr; let i = index;" fxLayoutAlign="center center"
+            [@thumbnail]="i == currentSelectedIndex?'active':'inactive'" (click)="imageClicked(i)" (mouseover)="assignMouseOverIndex(i)"
+            (mouseleave)="clearMouseOverIndex()" [fxShow]="imageObj.type != 'folder'">
+            <div class="ad-thumbnail-container" fxLayoutAlign="center center">
+                <div class="ad-thumbnail-delete-icon ad-curser-pointer" (click)="deleteClicked(i)" [hidden]="i != mouseOverIndex">
+                    <md-icon>delete</md-icon>
+                </div>
+                <img [src]="imageObj.path?imageObj.path:''" class="ad-thumbnail-delete-img" draggable="false" />
+            </div>
+        </div>
+    </div>
+    <!-- Selected Image Viewer -->
+    <div fxFlex fxLayout="row" fxLayoutAlign="center center" class="ad-image-viewer-container">
+        <div class="ad-image-viewer-left-arrow ad-curser-pointer ad-image-viewer-arrows" fxLayoutAlign=" center" (click)="carousalLeftClicked()">
+            <md-icon>keyboard_arrow_left</md-icon>
+        </div>
+        <div class="ad-image-container">
+            <div>
+                <h4>{{title}}</h4>
+            </div>
+            <div class="ad-imageviewer-image-center-container" fxLayoutAlign="center center">
+                <img [src]="clickedImageSrc" draggable="false" class="ad-imageviewer-image"/>
+            </div>
+        </div>
+        <div class="ad-image-viewer-right-arrow ad-curser-pointer ad-image-viewer-arrows" fxLayoutAlign=" center" (click)="carousalRightClicked()">
+            <md-icon>keyboard_arrow_right</md-icon>
+        </div>
+    </div>
+</div>

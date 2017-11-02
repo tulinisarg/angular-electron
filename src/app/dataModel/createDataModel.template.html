@@ -1,0 +1,32 @@
+<form #createDM="ngForm" fxLayout="column" class="dialog-container">
+    <md-slide-toggle name="datamodel" [(ngModel)]="typeBoolean" (change)="dmType()">{{dm}}</md-slide-toggle>
+    <br>
+    <div *ngIf="!typeBoolean" fxLayout="column">
+        <md-select name="appList" placeholder="Select App" [(ngModel)]="sourceAppName" required class="ad-margin-top-btm-5">
+            <md-option *ngFor="let app of appList, let i = index" [value]="app" (click)="getDataModelsByAppName(app)">
+                {{app}}
+            </md-option>
+        </md-select>
+        <br>
+        <md-select name="dataModelObj" placeholder="Select Data Model" [(ngModel)]="sourceDataModel" required class="ad-margin-top-btm-5">
+            <md-option *ngFor="let dm of dataModelList | toobjectarray" [value]="dm">
+                {{dm.name}}
+            </md-option>
+        </md-select>
+        <br>
+        <button md-raised-button (click)="dialogRef.close({'sourceAppName': sourceAppName, 'sourceDataModel': sourceDataModel})"
+            [disabled]=!createDM.valid>ADD</button>
+    </div>
+    <div *ngIf="typeBoolean" fxLayout="column">
+        <md-input-container>
+            <input mdInput name="dmName" [(ngModel)]="dataModel.name" placeholder="Data Model" pattern="^[a-zA-Z0-9_]*$" required>
+        </md-input-container>
+        <md-input-container>
+            <input mdInput name="dmDescription" [(ngModel)]="dataModel.description" placeholder="Description" required>
+        </md-input-container>
+        <md-input-container>
+            <input mdInput name="dataSource" [(ngModel)]="dataModel.dataSource" placeholder="Data Source" required>
+        </md-input-container>
+        <button md-raised-button (click)="dialogRef.close(dataModel)" [disabled]="!createDM.valid">ADD</button>
+    </div>
+</form>

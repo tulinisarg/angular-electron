@@ -1,0 +1,40 @@
+.console-window {
+  position: absolute !important;
+  z-index: 2 !important; 
+  bottom: 0 !important;
+  border-top: 1px solid #ccc;
+}
+
+.console-title-container {
+  /*background-color:#eeeeee;*/
+}
+
+.console-data-container {
+  overflow-y: scroll; 
+  background-color: white
+}
+
+
+.success-font {
+  color: #008000;
+}
+
+.error-font {
+  color: #ff0000;
+}
+
+.console-data {
+  white-space: pre-line;
+}
+
+.console-data-time {
+  color: #424242
+}
+
+.rotate-negative-45 {
+  transform: rotate(-45deg);
+}
+
+.chevron-right-container {
+  margin-bottom: 2px;
+}

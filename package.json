@@ -1,7 +1,7 @@
 {
-  "name": "angular-electron",
-  "version": "1.9.0",
-  "description": "Angular 4 with Electron (Typescript + SASS + Hot Reload)",
+  "name": "bhive-ad",
+  "version": "2.0.0",
+  "description": "Bhvie application designer",
   "homepage": "https://github.com/maximegris/angular-electron",
   "author": {
     "name": "Maxime GRIS",
@@ -23,7 +23,7 @@
     "start:web": "webpack-dev-server --content-base . --port 4200 --inline",
     "build:electron:main": "tsc main.ts --outDir dist && copyfiles package.json dist && cd dist && npm install --prod && cd ..",
     "build": "webpack --display-error-details && npm run build:electron:main",
-    "build:prod": "cross-env NODE_ENV=production npm run build",
+    "build:prod": "npm run build",
     "electron:serve": "npm run build:electron:main && electron ./dist --serve",
     "electron:test": "electron ./dist",
     "electron:dev": "npm run build && electron ./dist",
@@ -44,10 +44,18 @@
     "@angular/platform-browser": "4.4.3",
     "@angular/platform-browser-dynamic": "4.4.3",
     "@angular/router": "4.4.3",
+    "@angular/animations": "4.4.3",
+    "@angular/flex-layout": "2.0.0-beta.8",
+    "@angular/material": "2.0.0-beta.6",
     "core-js": "2.4.1",
     "enhanced-resolve": "3.3.0",
     "rxjs": "5.4.3",
-    "zone.js": "0.8.17"
+    "zone.js": "0.8.17",
+    "@jatahworx/bhive-core": "1.1.40",
+    "jquery": "3.2.1",
+    "jquery-ui-bundle": "1.12.1",
+    "hammerjs": "2.0.8",
+    "codemirror": "5.31.0"
   },
   "devDependencies": {
     "@angular/cli": "1.4.3",

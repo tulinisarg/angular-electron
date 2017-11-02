@@ -1,0 +1,153 @@
+.project-icon {
+  height: 60px;
+  width: 60px;
+  padding-left:18px;
+  padding-right:9px;
+  position:relative;
+}
+.create-app-container{
+  width: 300px;
+}
+.image-right{
+  position: absolute;
+  right: 10px;
+  top:20px;
+}
+.ad-card-height{
+  height:180px;
+  background:rgba(255, 247, 247, 0.47);
+  position: relative;
+  top:40px;
+}
+.ad-text-break{
+  word-break: break-all;
+  position: relative;
+  top:-10px;
+}
+.label-wrap{
+  padding-left: 9px;
+  padding-right: 9px;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+} 
+.label-wrap:hover{
+  overflow: visible; 
+  white-space: normal; 
+  width: auto;
+  line-height: middle;
+}
+.icons-cursor{
+  cursor: pointer;
+  position: relative;
+  top: 5px;
+  color: white;
+}
+.icons-cursor:after,.edit-icon{
+  left: -45px;
+}
+.icons-cursor:after,.delete-icon{
+  left: -23px;
+}
+.icons-cursor:after,.info-icon{
+  left: -1px;
+}
+.icons-cursor:after,.export_icon{
+  right: -23px;
+}
+.icons-cursor:after,.runtime_icon{
+  right:-46px
+}
+.toolbar-icons{
+  cursor: pointer;
+  font-size: 26px !important;
+  position: absolute;
+  top: 9px;
+}
+.toolbar-icons::after,.add-icon{
+  right: 140px;
+}
+.toolbar-icons::after,.switch-icon{
+  right: 30px;
+}
+.toolbar-icons::after,.import-icon{
+  right: 85px;
+}
+.toolbar-icons::after,.back-icon{
+  left:10px;
+}
+.icons-background { 
+  height: 37px;
+  position: relative;
+  background: #a4b2b9;
+} 
+.ad-card-shadow{
+  border-radius: 5px;
+  box-shadow: 0 3px 10px 4px rgba(0, 0, 0, .2), 
+              0 2px 2px 0 rgba(0, 0, 0, .14), 
+              0 1px 5px 0 rgba(0, 0, 0, .12) !important;
+}
+.body-background{
+  padding-left: 2%;
+  height:100vh;
+  overflow: auto;
+}
+.body-height{
+  height: 94vh;
+  background: #fafafa;
+}
+.toolbar-height{
+  background: #ded8d7;
+  min-height: 45px;
+  z-index: 100;
+  position: fixed;
+}
+.mat-toolbar {
+  height: 20px !important;
+}
+.fileContainer {
+  overflow: hidden;
+  position: relative;
+}
+.fileContainer [type=file] {
+  cursor: inherit;
+  font-size: 999px;
+  filter: alpha(opacity=0);
+  min-height: 100%;
+  min-width: 100%;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top: 0;
+}
+.fileContainer [type=file] {
+  cursor: pointer;
+} 
+.div-content{
+  position: relative;
+  left:24px;
+  top:-10px;
+}
+.dialog-title{
+  top:-12px;
+  position: relative;
+}
+.button-align{
+  text-align: center;
+  height:34px;
+} 
+.runtime-content{
+  height:100vh;
+  overflow: auto;
+}
+.runtime-text{
+  position: relative;
+  top:40px;
+}
+
+
+
+
+

@@ -1,0 +1,27 @@
+<div *ngIf="tabConfig?.configType == 'pages'">
+    <page-designer [tabConfig]="tabConfig"></page-designer>
+</div>
+<div *ngIf="tabConfig?.configType == 'appRoutes'">
+    <ad-app-routing-wrapper fxLayout="column" fxFill [tabConfig]="tabConfig"></ad-app-routing-wrapper>
+</div>
+<div *ngIf="tabConfig?.configType == 'models'" fxFill>
+    <data-model-editor [tabConfig]="tabConfig" fxLayout="column" fxFill></data-model-editor>
+</div>
+<div *ngIf="tabConfig?.configType == 'cordovaConfig'" fxFill>
+    <xml-editor [tabConfig]="tabConfig" fxLayout="column" fxFill></xml-editor>
+</div>
+<div *ngIf="tabConfig?.configType == 'nodeRED'" fxFill>
+    <node-RED [tabConfig]="tabConfig" fxLayout="column" fxFill></node-RED>
+</div>
+<div *ngIf="tabConfig?.configType == 'environments'" fxFill>
+    <environment [tabConfig]="tabConfig" fxLayout="column" fxFill></environment>
+</div>
+<div *ngIf="tabConfig?.configType == 'resources'" fxFill>
+    <bh-assets-editor [tabConfig]="tabConfig" fxLayout="column" fxFill></bh-assets-editor>
+</div>
+<div *ngIf="tabConfig?.configType == 'css'" fxFill>
+    <css-editor [tabConfig]="tabConfig" fxLayout="column" fxFill></css-editor>
+</div>
+<div *ngIf="tabConfig?.configType == 'ngService'" fxFill>
+    <ng-service-ts-editor [tabConfig]="tabConfig" fxLayout="column" fxFill></ng-service-ts-editor>
+</div>

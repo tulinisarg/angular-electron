@@ -1,0 +1,21 @@
+<div fxLayout="row" fxFill #droppabelRegion (drop)="dropped($event); draggingOver = false;" (dragover)="draggingOver = true;"
+    [fxShow]="!draggingOver">
+    <!-- For displaying folder structure
+    It is given permanent width of 300px pixels because if percentage in assigned then in large devices folder tree display takes too
+    much space 
+    -->
+    <div fxFlex="30%" class="ad-assets-tree" *ngIf="tree">
+        <tree-component [tree]="tree" [deletePathObj]="deletePathObj" (selectedEventChange)="selectedOption($event);" [insertPathObj]="insertPathObj"
+            [selectedEvent]="selectedEvent"></tree-component>
+    </div>
+    <!-- For displaying drag and drop region -->
+    <div fxFlex="70%" fxFill fxLayoutAlign="center">
+        <ad-image-slider [imageObjArr]="imageObjArr" fxFill (imageDeleteIndex)="deleteImage($event)"></ad-image-slider>
+    </div>
+</div>
+<div fxFill class="ad-droppable-page" fxLayoutAlign="center center" [fxShow]="draggingOver" (drop)="dropped($event); draggingOver = false;">
+    <div fxFill fxLayoutAlign="center center">
+        <h1>Drop Files.</h1>
+        <md-icon>arrow_drop_down</md-icon>
+    </div>
+</div>

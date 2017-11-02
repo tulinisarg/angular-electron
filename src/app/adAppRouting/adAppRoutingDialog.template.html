@@ -1,0 +1,6 @@
+<h1 md-dialog-title>Confirmation</h1>
+<div md-dialog-content>{{messageContent}}</div>
+<div md-dialog-actions>
+  <button type="button" md-raised-button (click)="dialogRef.close(true)">{{okBtn}}</button>
+  <button type="button" md-button (click)="dialogRef.close()" *ngIf="closeButtonVisibility">Cancel</button>
+</div>

@@ -1,0 +1,20 @@
+<md-tab-group fxLayout="row" class="vertical-tab" (selectChange)="tabChanged($event)">
+  <md-tab>
+    <ng-template md-tab-label>
+      <div>
+        Html
+      </div>
+    </ng-template>
+    <app-b-keeper [tabConfig]="tabConfig" #bKeeper></app-b-keeper>
+  </md-tab>
+  <md-tab>
+    <ng-template md-tab-label>
+      <div>
+        Ts
+      </div>
+    </ng-template>
+    <div #vertical class="vertical-tab-content tsEditor-container">
+      <ts-editor [tabConfig]="tabConfig" #tsEditor></ts-editor>
+    </div>
+  </md-tab>
+</md-tab-group>

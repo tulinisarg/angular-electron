@@ -1,0 +1,7 @@
+  <form #createNgService="ngForm" class="create-ng-service-container" fxLayout="column" fxLayoutAlign="center">
+    <h2 md-dialog-title	>Enter NgService Name</h2>
+      <md-input-container  fxLayout="column" fxLayoutAlign="center">
+        <input type="text" mdInput  [(ngModel)]="ngService.name" name="serviceName"  placeholder="NgService Name" required>
+      </md-input-container>
+    <button md-raised-button class="" (click)="dialogRef.close(ngService)" [disabled]="!createNgService.valid">Create NgService</button>
+  </form>

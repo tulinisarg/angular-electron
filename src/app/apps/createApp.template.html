@@ -1,0 +1,16 @@
+<form class="create-app-container" #createAppForm="ngForm" fxLayout="column" fxLayoutAlign="center">
+  <h4 md-dialog-title>Enter App Details</h4>
+  <md-input-container>
+    <input type="text" mdInput name="appName" [(ngModel)]="appDetails.appName" placeholder="App Name" pattern="[a-zA-Z0-9_-\s]*" required>
+  </md-input-container>
+    <md-input-container>
+    <input type="text" mdInput name="tenant" [(ngModel)]="appDetails.tenant" placeholder="Tenant" required>
+  </md-input-container>
+  <md-input-container>
+    <input type="text" mdInput name="artUrl" [(ngModel)]="appDetails.artUrl" placeholder="Art Url" required>
+  </md-input-container>
+   <md-input-container>
+    <input type="text" mdInput name="description" [(ngModel)]="appDetails.description" placeholder="Description" required>
+  </md-input-container>
+  <button md-raised-button class="" (click)="dialogRef.close(appDetails)" [disabled]="!createAppForm.valid">Create App</button>
+</form>

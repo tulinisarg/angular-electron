@@ -1,0 +1,20 @@
+<div class="console-window" [@toggleConsoleWindow]="clsWindow">
+  <div fxLayout="row" class="ad-cursor-pointer console-title-container" fxLayoutAlign="end" (click)="controlWindow()">
+    <!--<span fxFlex="100" class="ad-margin-lt-rt-15 ad-margin-top-5">Console</span>-->
+    <div fxLayout="row" class="ad-margin-right-15">
+      <div [hidden]="!clsWindow">
+        <i class="material-icons" style="transform: rotate(-45deg)" mdTooltip="Hide Console" mdTooltipPosition="above">chevron_left</i>
+      </div>
+      <div [hidden]="clsWindow" style="margin-bottom:2px;">
+        <i class="material-icons" style="transform: rotate(-45deg)" mdTooltip="View Console" mdTooltipPosition="right" >chevron_right</i>
+      </div>
+    </div>
+  </div>
+  <div [@toggleState]='clsWindow' class="console-data-container">
+    <div class="ad-margin-lt-rt-15" *ngFor="let data of cosoleDataArray" [ngClass]="{'success-font': (data.httpStatus | colorCode) == true , 'error-font': (data.httpStatus | colorCode) == false }">
+      <code class="console-data" *ngIf="data.data || data.error?.stack || data.error">
+          <span class="console-data-time">{{data.time | date:"HH:mm:ss"}} </span>&nbsp;{{data?.data || data.error?.stack || data.error}}
+        </code>
+    </div>
+  </div>
+</div>

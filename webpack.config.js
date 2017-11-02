@@ -21,7 +21,7 @@ const isProd = (process.env.NODE_ENV === 'production');
 
 //add all external css to be added in our index.html--> like as if it's .angular-cli.json
 const styles = [
-  "./src/styles.scss"
+  "./src/styles.css"
 ];
 
 //we add all our external scripts we want to load externally, like inserting in our index.html --> like as if it's .angular-cli.json
@@ -223,7 +223,9 @@ module.exports = {
     "string_decoder": "require('string_decoder')",
     "url": "require('url')",
     "util": "require('util')",
-    "zlib": "require('zlib')"
+    "zlib": "require('zlib')",
+    "spawn-sync": "require('spawn-sync')",
+    "@jatahworx/bhive-core": "require('@jatahworx/bhive-core')"
   },
   "resolve": {
     "extensions": [

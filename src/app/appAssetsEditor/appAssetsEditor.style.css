@@ -1,0 +1,10 @@
+.ad-assets-tree {
+  height:94%;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.ad-droppable-page {
+    background-color: lightgrey;
+    color: darkgrey 
+}

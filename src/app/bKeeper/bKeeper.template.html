@@ -1,0 +1,58 @@
+<md-sidenav-container class="sidenav-container" [ngClass]="htmlDropZoneId">
+  <md-sidenav mode="side" opened="true" #sidenav disableClose="true">
+    <div id="menu">
+      <div *ngFor="let title of palletTitles | toobjectarray">
+        <span>
+          <button md-button color="primary" class="title" (click)="title.isCollapsed = !title.isCollapsed">{{title.title}}
+            <i class="palletIcon material-icons" *ngIf="!title.isCollapsed">keyboard_arrow_down</i>
+            <i class="palletIcon material-icons" *ngIf="title.isCollapsed">keyboard_arrow_up</i>
+          </button>
+        </span>
+        <div href="#" *ngFor="let item of layoutArr">
+          <div *ngIf="title.val == item.type" class="palelleteComponent drag ad-cursor-pointer" [@toggleState]="title.isCollapsed"
+            [PaletteKey]="item.guid">
+            <div>{{item.paletteTemplate}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </md-sidenav>
+  <div class="site">
+    <main id="{{htmlDropZoneId}}" class="content dropableZone drop drop-container container-label"> </main>
+  </div>
+  <footer class="footer" *ngIf="!hideProp">
+    <!-- <div> -->
+    <form #attrForm="ngForm">
+      <!--<span>-->
+      <span class="new-property">New Property : </span>
+      <span class="ad-font-size-18 ad-margin-lt-rt-5" fxLayoutGap="20px"> Attribute</span>
+      <md-slide-toggle md-button-toggle name="slide" [(ngModel)]="attrToggle"> <span class="slide-toggle-label ad-margin-lt-rt-5"> Key/Value </span></md-slide-toggle>
+      <!--</span>-->
+      <md-input-container class="ad-margin-lt-rt-5">
+        <input mdInput type="text" name="key" [(ngModel)]="newAttr.key" placeholder="key">
+      </md-input-container>
+      <md-input-container *ngIf="attrToggle" class="ad-margin-lt-rt-5">
+        <input mdInput type="text" name="value" [(ngModel)]="newAttr.value" placeholder="value">
+      </md-input-container>
+      <md-input-container *ngIf="!attrToggle" class="ad-margin-lt-rt-5">
+        <input mdInput type="text" name="value" [(ngModel)]="newAttr.key" placeholder="value" [disabled]="!attrToggle">
+      </md-input-container>
+      <button md-raised-button type="submit" name="button" (click)="createAttr()" [disabled]='(!newAttr.key && !attrToggle) || (!newAttr.value && attrToggle)'>ADD</button>
+    </form>
+    <!-- </div> -->
+
+    <div fxLayout="row" fxLayoutWrap="wrap">
+      <div *ngFor="let attrProps of currAttrProps; let i = index;" fxFlex="25" fxFlex.md="33" fxFlex.sm="50" (mouseenter)="attrProps[i] = true"
+        (mouseleave)="attrProps[i] = false">
+        <md-input-container>
+          <input mdInput type="text" name="" [(ngModel)]="attrProps._value" placeholder="{{attrProps._key}}">
+        </md-input-container>
+        <md-icon class="tabs-mat-icon ad-cursor-pointer" *ngIf="attrProps._attrDef != 'p'" mdTooltip="" mdTooltipPosition="below"
+          (click)="deleteAttr(i)" [ngClass]="{'hideClose': (!attrProps[i]), 'showClose':(attrProps[i] == true)}">clear</md-icon>
+      </div>
+    </div>
+  </footer>
+  <footer class="footer" [hidden]="hideHtmlEditor">
+    <textarea #textarea id="textarea" name="name"></textarea>
+  </footer>
+</md-sidenav-container>

@@ -1,0 +1,117 @@
+<div fxLayout="column" fxFlex class="ad-fullscreen">
+  <div fxLayout="column" fxFill>
+    <div fxLayout="column" fxFlex>
+      <ad-action-bar></ad-action-bar>
+      <!--<md-toolbar fxLayoutAlign="start center" class="ad-top-toolbar">
+        <button md-button (click)="sidenav.toggle(sidenav.isOpen)">
+          <md-button-toggle (click)="sidenav.toggle(sidenav.isOpen)"><md-icon>dehaze</md-icon></md-button-toggle>
+        </button>
+      </md-toolbar>-->
+      <md-sidenav-container fxFlex fxFill class="ad-sidenav-content">
+        <md-sidenav #sidenav mode="side" opened="true" class="ad-sidenav-menu" disableClose="true">
+          <!--md-list. Each option in md-list should open a new tab with the respective component loaded.-->
+          <md-list fxFlex>
+            <md-list-item mdTooltip="Routes" mdTooltipPosition="right" (click)="assignConfigToTab('appRoutes')" class="ad-cursor-pointer">
+              <i class="material-icons">settings_input_composite</i>
+            </md-list-item>
+            <md-list-item [mdMenuTriggerFor]="pages" mdTooltip="Pages" mdTooltipPosition="right" class="ad-cursor-pointer">
+              <i class="material-icons">web</i>
+            </md-list-item>
+            <md-menu #pages="mdMenu" class="submenu" [ngStyle]="{'display:none': true}">
+              <button md-menu-item *ngFor="let page of pageListObj; let i=index" (click)="assignConfigToTab('pages',i)">{{page?.val.appPageName}}</button>
+              <span md-menu-item *ngIf="!pageListObj || pageListObj.length == 0"> No page available</span>
+            </md-menu>
+            <md-list-item mdTooltip="Config XML" mdTooltipPosition="right" (click)="assignConfigToTab('cordovaConfig')" class="ad-cursor-pointer">
+              <i class="material-icons">extension</i>
+            </md-list-item>
+            <md-list-item mdTooltip="CSS" mdTooltipPosition="right" (click)="assignConfigToTab('css')" class="ad-cursor-pointer">
+              <i class="material-icons">format_color_fill</i>
+            </md-list-item>
+            <md-list-item [mdMenuTriggerFor]="models" mdTooltip="Models" mdTooltipPosition="right" class="ad-cursor-pointer">
+              <i class="material-icons">developer_board</i>
+            </md-list-item>
+            <md-menu #models="mdMenu" class="submenu" [ngStyle]="{'display:none': true}">
+              <button md-menu-item *ngFor="let dataModel of dataModelObj; let i=index" (click)="assignConfigToTab('models',i)">
+                {{dataModel.val.name}}
+              </button>
+              <span md-menu-item *ngIf="!dataModelObj || dataModelObj.length == 0"> No model available</span>
+            </md-menu>
+            <md-list-item mdTooltipPosition="right" mdTooltip="Node RED" (click)="assignConfigToTab('nodeRED')" class="ad-cursor-pointer">
+              <i class="material-icons">device_hub</i>
+            </md-list-item>
+            <md-list-item [mdMenuTriggerFor]="environment" mdTooltipPosition="right" mdTooltip="Environments" class="ad-cursor-pointer">
+              <i class="material-icons">domain</i>
+            </md-list-item>
+            <md-menu #environment="mdMenu" class="submenu" [ngStyle]="{'display:none': true}">
+              <button md-menu-item *ngFor="let environment of environmentObject; let i=index" (click)="assignConfigToTab('environments',i)">
+                      {{environment.key}}
+                  </button>
+              <span md-menu-item *ngIf="!environmentObject || environmentObject.length == 0"> No Environment available</span>
+            </md-menu>
+            <md-list-item mdTooltip="Asset Editor" mdTooltipPosition="right" class="ad-cursor-pointer" (click)="assignConfigToTab('resources',i)">
+              <md-icon>web_asset</md-icon>
+            </md-list-item>
+            <md-list-item [mdMenuTriggerFor]="ngService" mdTooltipPosition="right" mdTooltip="NgServies" class="ad-cursor-pointer">
+              <i class="material-icons">merge_type</i>
+            </md-list-item>
+            <md-menu #ngService="mdMenu" class="submenu">
+              <button md-menu-item *ngFor="let service of ngServiceObj; let i=index" (click)="assignConfigToTab('ngService', i)">
+                {{service.appProviderName}}
+              </button>
+              <span md-menu-item *ngIf="!ngServiceObj || ngServiceObj.length == 0"> No NgService available</span>
+            </md-menu>
+            <md-list-item mdTooltip="Add" mdTooltipPosition="right" [mdMenuTriggerFor]="add" class="ad-cursor-pointer">
+              <md-icon>add</md-icon>
+            </md-list-item>
+            <md-menu #add="mdMenu" class="submenu" [ngStyle]="{'display:none': true}">
+              <button md-menu-item (click)="createAppPage()">Page</button>
+              <button md-menu-item (click)="createDataModel()">Data Model</button>
+              <button md-menu-item (click)="createEnvironment()">Environment</button>
+              <button md-menu-item (click)="createService()">NgService</button>
+            </md-menu>
+          </md-list>
+        </md-sidenav>
+        <md-tab-group (selectChange)="onTabChange($event)" [(selectedIndex)]="selectedIndex" fxFlex fxFill class="tabs">
+          <md-tab *ngFor="let tab of tabs; let i = index;">
+            <ng-template md-tab-label>
+              <div fxLayout="row" fxLayoutAlign="space-around center" class="tab" (mouseenter)="tab['showClose'] = true;" (mouseleave)="tab['showClose'] = false;">
+                <md-icon class="tabs-mat-icon" md-list-icon>{{tab?.tabIcon}}</md-icon>
+                <div class="overme" mdTooltip="{{tab?.tabName}}" mdTooltipPosition="below">{{tab?.tabName}}</div>
+                <md-icon class="tabs-mat-icon" md-list-icon (click)="deleteTab(i);" mdTooltip="Close" mdTooltipPosition="below" [ngClass]="{'hide': (!tab['showClose']), 'show':(tab['showClose'] == true)}">clear</md-icon>
+              </div>
+            </ng-template>
+            <!--<bh-ad-editor-loader [tabChangeEvent]="tabChangeEvent" [selectedTab]="tab" [iamactive]="i == selectedIndex? 'active': 'notactive'"></bh-ad-editor-loader>-->
+            <div *ngIf="tab?.configType == 'pages'">
+              <page-designer [tabConfig]="tab" [currentlyActive]="i==selectedIndex?true:false" (deleteEvent)="deleteFromMultiTab(i, $event)"></page-designer>
+            </div>
+            <div *ngIf="tab?.configType == 'appRoutes'">
+              <ad-app-routing-wrapper fxLayout="column" fxFill [tabConfig]="tab" [currentlyActive]="i==selectedIndex?true:false"></ad-app-routing-wrapper>
+            </div>
+            <div *ngIf="tab?.configType == 'models'" fxFill>
+              <data-model-editor [tabConfig]="tab" fxLayout="column" fxFill [currentlyActive]="i==selectedIndex?true:false" (deleteEvent)="deleteFromMultiTab(i, $event)"></data-model-editor>
+            </div>
+            <div *ngIf="tab?.configType == 'cordovaConfig'" fxFill>
+              <xml-editor [tabConfig]="tab" fxLayout="column" fxFill [currentlyActive]="i==selectedIndex?true:false"></xml-editor>
+            </div>
+            <div *ngIf="tab?.configType == 'nodeRED'" fxFill>
+              <node-RED [tabConfig]="tab" fxLayout="column" fxFill [currentlyActive]="i==selectedIndex?true:false"></node-RED>
+            </div>
+            <div *ngIf="tab?.configType == 'environments'" fxFill>
+              <environment [tabConfig]="tab" fxLayout="column" fxFill [currentlyActive]="i==selectedIndex?true:false" (deleteEvent)="deleteFromMultiTab(i, $event)"></environment>
+            </div>
+            <div *ngIf="tab?.configType == 'resources'" fxFill>
+              <bh-assets-editor [tabConfig]="tab" fxLayout="column" fxFill [currentlyActive]="i==selectedIndex?true:false"></bh-assets-editor>
+            </div>
+            <div *ngIf="tab?.configType == 'css'" fxFill>
+              <css-editor [tabConfig]="tab" fxLayout="column" fxFill [currentlyActive]="i==selectedIndex?true:false"></css-editor>
+            </div>
+            <div *ngIf="tab?.configType == 'ngService'" fxFill>
+              <ng-service-ts-editor [tabConfig]="tab" fxLayout="column" fxFill [currentlyActive]="i==selectedIndex?true:false" (deleteEvent)="deleteFromMultiTab(i, $event)"></ng-service-ts-editor>
+            </div>
+          </md-tab>
+        </md-tab-group>
+      </md-sidenav-container>
+      <console-window></console-window>
+    </div>
+  </div>
+</div>

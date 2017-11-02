@@ -1,0 +1,18 @@
+.selected {
+    background: grey;
+}
+.defaultSelected {
+    background-color: #ececec;
+}
+.divContainer {
+    margin-top: 30px;
+}
+.deleteIcon {
+    font-size: 19px;
+    opacity: 0;
+    cursor: pointer;
+}
+.divContent:hover .deleteIcon {
+    color: red;
+    opacity: 1;
+}

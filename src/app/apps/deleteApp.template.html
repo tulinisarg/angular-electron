@@ -1,0 +1,7 @@
+<form class="create-app-container" #createAppForm="ngForm" fxLayout="column" fxLayoutAlign="center">
+  <h4 md-dialog-title>Do you want to delete APP?</h4>
+  <div fxLayout="row" layout-al>
+    <button fxFlex="50" md-raised-button class="" (click)="dialogRef.close(true)">Delete App</button>
+    <button fxFlex="50" md-raised-button class="" (click)="dialogRef.close(false)">Cancel</button>
+  </div>
+</form>

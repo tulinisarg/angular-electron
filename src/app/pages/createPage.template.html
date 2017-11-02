@@ -1,0 +1,9 @@
+<!-- TODO: @Sarath02 - Change current css class to appropriate class -->
+<!-- css class name is changed -->
+  <form #createPage="ngForm" class="create-page-container" fxLayout="column" fxLayoutAlign="center">
+    <h2 md-dialog-title	>Enter Page Name</h2>
+      <md-input-container  fxLayout="column" fxLayoutAlign="center">
+        <input type="text" mdInput #pageName [(ngModel)]="pageDetails.pageName" name="pageName"  placeholder="Page Name" required>
+      </md-input-container>
+    <button md-raised-button class="" (click)="dialogRef.close(pageDetails)" [disabled]="!createPage.valid">Create Page</button>
+  </form>

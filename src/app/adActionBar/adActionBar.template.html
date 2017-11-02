@@ -1,0 +1,9 @@
+<md-toolbar class="ad-top-toolbar">
+  <md-icon mdTooltip="All Apps" (click)="goBack()" class="ad-cursor-pointer">arrow_back</md-icon>
+  <span class="ad-spacer"></span>
+  <div *ngFor="let actionButton of actionButtons; let i = index">
+    <button md-button (click)="broadcastActionEvent(actionButton.event, actionButton.eventAction)" [title]="actionButton.title ? actionButton.title : 'actionButton.eventAction'">
+            <md-button-toggle><md-icon>{{actionButton.buttonName}}</md-icon></md-button-toggle>
+        </button>
+  </div>
+</md-toolbar>

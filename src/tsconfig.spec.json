@@ -16,10 +16,5 @@
   "include": [
     "**/*.spec.ts",
     "**/*.d.ts"
-  ],
-  "exclude": [
-    "dist",
-    "app-builds",
-    "node_modules"
   ]
 }

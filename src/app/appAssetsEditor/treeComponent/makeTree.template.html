@@ -1,0 +1,34 @@
+<ul>
+    <li *ngFor="let branch of tree.children; let i = index;" class="ad-cursor-pointer">
+        <div [ngClass]="{'selected': path && selectedEvent && path == selectedEvent && selectedFolderIndex == i, 'not-selected': path && selectedEvent && path != selectedEvent || selectedFolderIndex != i}" fxLayoutAlign=" center"
+            (click)="selectFolder(i, branch);" *ngIf="branch.type == 'folder'" >
+
+            <md-icon [fxShow]="branch.type == 'folder'" class="tree-icons">
+                folder
+            </md-icon>
+
+            <div [fxShow]="branch.type == 'folder'">
+                {{branch.name}}
+            </div>
+
+            <div (click)="openFolder(i)">
+                <md-icon [fxShow]="branch.type == 'folder' && branch.open">
+                    keyboard_arrow_down
+                </md-icon>
+
+                <md-icon [fxShow]="branch.type == 'folder' && !branch.open && branch.children && checkIfAnyChildIsFolder(branch.children)">
+                    keyboard_arrow_right
+                </md-icon>
+            </div>
+
+        </div>
+
+        <div [fxShow]="branch && branch.type == 'folder' && branch.open">
+            <!-- recursive call to tree component -->
+            <tree-component [tree]="branch" [path]="path" [deletePathObj]="deletePathObj" [insertPathObj]="insertPathObj" (selectedEventChange)="selectedEventChange.emit($event);"
+                [selectedEvent]="selectedEvent">
+            </tree-component>
+
+        </div>
+    </li>
+</ul>

@@ -1,0 +1,9 @@
+<form fxLayout="column" fxLayoutAlign="center">
+  <h3 md-dialog-title>Import App</h3>
+  <p class="ad-margin-top-5">App with same name already exists.</p>
+  <p class="ad-margin-top-5">Do you want to override App?</p>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <button md-raised-button fxFlex class="" (click)="dialogRef.close(true)">Yes</button>
+    <button md-raised-button fxFlex class="" (click)="dialogRef.close(false)">No</button>
+  </div>
+</form>

@@ -1,0 +1,26 @@
+.selected {
+    background-color: grey;
+}
+
+.list-card {
+    z-index: 1;
+    position: relative;
+}
+
+.delete {
+    position:absolute;
+    z-index:2;
+    right:50px;
+    top:25%;
+    cursor:pointer;
+}
+.delete md-icon {
+    font-size: 19px;
+}
+.list-card:hover .delete md-icon {
+    color: red;
+}
+.input-card {
+    margin-bottom: 2em;
+    margin-top: 2em;
+}

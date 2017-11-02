@@ -1,0 +1,41 @@
+
+
+<div fxLayout fxLayoutAlign="center" class="divContainer">
+    <form #environmentForm="ngForm">
+        <div [ngStyle.md]="{'width':'70vw'}" [ngStyle.lg]="{'width': '60vw'}" [ngStyle.xl]="{'width': '70vw'}">
+            <md-card>
+                <md-card-content>
+                    <div class="flex-container" fxLayout="row" fxLayoutAlign="start" fxLayoutGap="20px">
+                        <md-input-container fxFlex="45%">
+                            <input #envProperty mdInput placeholder="Enter Name" name="environmentName" [(ngModel)]="environmentData.name" pattern="^\s*\S+\s*$" [disabled]="!isNameDisabled" required>
+                        </md-input-container>
+                        <md-input-container fxFlex="45%">
+                            <input mdInput placeholder="Enter Value" name="environmentValue" [(ngModel)]="environmentData.value" required>
+                        </md-input-container>
+                        <button (click)="addNewproperty()" *ngIf="disableBtn" [disabled]="environmentForm.invalid" md-button><md-icon md-list-icon>add</md-icon></button>
+                        <button (click)="updateproperty()" *ngIf="!disableBtn" [disabled]="environmentForm.invalid" md-button><md-icon md-list-icon>check</md-icon></button>
+                        <button (click)="clearproperty()" md-button><md-icon md-list-icon>clear</md-icon></button>
+                    </div>
+                </md-card-content>
+            </md-card>
+        </div>
+    </form>
+</div>
+<div fxLayout fxLayoutAlign="center" class="divContainer">
+    <div [ngStyle.md]="{'width':'70vw'}" [ngStyle.lg]="{'width': '60vw'}" [ngStyle.xl]="{'width': '70vw'}">
+        <md-card class="flex-container" fxLayout="row" fxLayoutAlign="start">
+                <div fxFlex="45%">Name</div>
+                <div fxFlex="45%">Value</div>
+        </md-card>
+        <md-divider></md-divider>
+        <div  *ngFor="let list of editEnvironment; let i = index; trackBy:i" (click)="setBackground(list, i)" class="divContent" fxLayout="row" fxLayoutAlign="start" >
+            <md-card fxLayout="row" fxFlex="100%" [ngClass] ="{'selected': updatePropertyIndex == i && list.editable == true, 'defaultSelected': list.editable == false}">
+                <div class="overflow_wrap" fxFlex="45%">{{list.envkey}}</div>
+                <div class="overflow_wrap" fxFlex="45%">{{list.envvalue}}</div>
+                <div *ngIf="list.editable" (click)="deleteproperty(i)">
+                    <md-icon class="deleteIcon" md-list-icon >delete</md-icon>
+                </div>
+            </md-card>
+        </div>
+    </div>
+</div>

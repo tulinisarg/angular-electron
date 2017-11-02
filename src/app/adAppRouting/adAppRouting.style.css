@@ -1,0 +1,51 @@
+  ul {
+  margin: 0px 0px 0px 20px;
+  list-style: none;
+  line-height: 2em;
+  font-family: Arial;
+}
+ul li {
+  font-size: 16px;
+  position: relative;
+  /*padding: 20px;*/
+}
+ul li:before {
+  position: absolute;
+  left: -15px;
+  top: 0px;
+  content: '';
+  display: block;
+  border-left: 1px solid #ddd;
+  height: 1em;
+  border-bottom: 1px solid #ddd;
+  width: 10px;
+}
+ul li:after {
+  position: absolute;
+  left: -15px;
+  bottom: -7px;
+  content: '';
+  display: block;
+  border-left: 1px solid #ddd;
+  height: 100%;
+}
+ul li.root {
+  margin: 0px 0px 0px -20px;
+}
+ul li.root:before {
+  display: none;
+}
+ul li.root:after {
+  display: none;
+}
+ul li:last-child:after {
+  display: none;
+}
+
+.element-margin {
+  margin: 5px;
+}
+
+.route-fixed-width {
+  width: 1280px;
+}

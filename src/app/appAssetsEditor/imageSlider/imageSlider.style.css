@@ -1,0 +1,61 @@
+.ad-thumbnail-slider-container {
+ overflow-x:scroll;
+ height:165px; 
+}
+
+.ad-thumbnail-container {
+  height:150px;
+  width:150px;
+  margin: 0px 5px 0px 5px;
+}
+
+.ad-thumbnail-delete-icon {
+  position:absolute;
+  top:10px;
+  right:0;
+  color:red;
+}
+
+.ad-thumbnail-delete-img {
+  max-width:100%;
+  max-height:90%;
+}
+
+.ad-image-viewer-container {
+  width:100%;
+  text-align:center;
+  overflow-y:auto;
+  position:relative;
+  background-color:lightgray;
+}
+
+.ad-image-viewer-left-arrow {
+  left:25px;
+}
+
+.ad-image-viewer-right-arrow {
+  right:25px;
+}
+
+.ad-image-viewer-arrows {
+  position:absolute;
+  height:100%;
+}
+
+.ad-curser-pointer {
+  cursor:pointer;
+}
+
+.ad-image-container {
+  height:100%;
+  width:100%;
+}
+
+.ad-imageviewer-image {
+  max-width:80%;
+  max-height:90%;
+}
+
+.ad-imageviewer-image-center-container {
+  height:87%;
+}

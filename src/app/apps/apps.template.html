@@ -1,0 +1,46 @@
+<md-toolbar class="toolbar-height">
+  <div fxLayout="row" fxLayoutAlign="center">
+    <md-icon (click)='createApp()' mdTooltip="Create App" class="toolbar-icons add-icon">create_new_folder</md-icon>
+    <div fxLayout="row" class="toolbar-icons import-icon">
+      <label class="fileContainer" mdTooltip="Import">
+        <md-icon >unarchive</md-icon>
+       <input type="file" ngModel id="importFile"  accept=".nos" name="file"  onclick="this.value = null"  (change)="unZip($event)" required />
+ </label>
+    </div>
+    <div fxLayout="row" class="image-right toolbar-icons switch-icon">
+      <label class="fileContainer" mdTooltip="Switch">
+        <md-icon >swap_horiz</md-icon>
+       <input type="file" ngModel id="switchFile"  name="file" webkitdirectory mozdirectory  onclick="this.value = null"  (change)="switchWorkSpace($event)" required />
+ </label>
+    </div>
+  </div>
+</md-toolbar>
+<div class="body-background">
+  <div fxLayout="row" fxLayoutWrap fxLayoutGap=2% fxLayoutAlign.xs="center" fxLayoutGap.sm=6%>
+    <md-card fxFlex.lg=18% fxFlex="18" fxFlex.md=23% fxFlex.sm=43% fxFlex.xs=60% class="md-card-margin-tabs ad-card-shadow project-cards ad-margin-top-btm-15 ad-card-shadow ad-card-height"
+      *ngFor="let app of appList; let i = index">
+      <div fxLayout="row" fxLayoutAlign="center">
+        <img src="http://placehold.it/350x150" alt="Project Icon" class="project-icon ad-margin-right-15">
+      </div>
+      <md-card-footer>
+        <div fxLayout="column">
+          <div fxLayout="row" fxLayoutAlign="center" class="ad-text-break text-background">
+            <span class="ad-font-size-20 ad-font-weight-bold label-wrap">{{app.appName}}</span>
+          </div>
+          <div fxlayout="row" fxLayoutAlign="center" class="icons-background">
+            <md-icon class="edit-icon icons-cursor" (click)="editApp(app.appName)" mdTooltip="Edit">edit</md-icon>
+            <md-icon class="delete-icon icons-cursor" mdTooltip="Delete" (click)="deleteApp(app.appName, i)">delete</md-icon>
+            <md-icon class="icons-cursor info-icon" mdTooltip="Created Date:{{app.createDate}} , Description:{{app.description}}">info_outline</md-icon>
+            <div fxLayout="row">
+              <label class="fileContainer icons-cursor export_icon" mdTooltip="Export" (change)="createZip(app.appName,$event)">
+                <md-icon>archive</md-icon>
+               <input type="file" ngModel id="exportFile" name="file" webkitdirectory mozdirectory onclick="this.value = null" required />
+         </label>
+            </div>
+            <md-icon mdTooltip="RunTime" class="icons-cursor runtime_icon" routerLink="/runtime">settings</md-icon>
+          </div>
+        </div>
+      </md-card-footer>
+    </md-card>
+  </div>
+</div>

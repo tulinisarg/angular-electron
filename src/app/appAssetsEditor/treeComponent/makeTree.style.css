@@ -1,0 +1,30 @@
+ul {
+    list-style-type: none;
+    /*width: 100%;*/
+       white-space:nowrap;
+}
+
+li {
+    /*width: 200px; Giving fixed size because the background-color of list starts to end when container ends*/
+       display:inline;
+       background-color: yellow;
+}
+
+.names {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.selected {
+    /*background-color: lightgrey;
+    border-bottom: 1px solid darkgrey;*/
+    color: black;    
+}
+
+.not-selected {
+    color: darkgray;    
+}
+
+.tree-icons {
+    padding-right: 10px;
+}
